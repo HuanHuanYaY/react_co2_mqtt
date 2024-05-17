@@ -39,7 +39,7 @@ function App() {
       protocol: 'mqtt',
     };
     //const mqtt=require('mqtt');
-    const client = mqtt.connect('ws://192.168.200.75:9001/mqtt', option);
+    const client = mqtt.connect('ws://192.168.1.101:9001/mqtt', option);
     const topic = 'arrowgd/sensor/infineon/u/CO2-0102B6GD';
     client.on('connect', () => {
       client.subscribe(topic, { qos: 0 });
@@ -228,13 +228,13 @@ function App() {
             </Card>
             <header style={{fontSize:'30px',marginLeft:'420px',marginTop:'30px'}}>Co2 Detect Value Line Chart</header>
             <LineChart width={1200} height={400} data={co2Data} style={{flex:'1',margin:'20px'}}>
-            <Line type="monotone" dataKey="value" stroke="#8884d8" />
+            <Line type="monotone" dataKey="value" stroke="#8884d8" name="CO2 PPM"/>
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="time" type='number'>
               <Label offset={0} position="insideBottom" value="Time/S"></Label>
             </XAxis>
             <YAxis dataKey="value">
-              <Label angle="-90" position="insideLeft" value="Co2 Value"></Label>
+              <Label angle="-90" position="insideLeft" value="Co2 PPM Value"></Label>
             </YAxis>
             <Tooltip />
           </LineChart>
